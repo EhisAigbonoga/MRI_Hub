@@ -1,0 +1,281 @@
+{% extends 'crihhome/base.html' %}
+{% load static %}
+{% block body %}
+
+{% include "crihhome/header.html" %}
+<div class="firstset">
+
+    <div class="row no-gutters">
+        <div class="col-sm-6 col-md-8">
+            <div class="latest">
+                <h4><b>Latest on MRI Hub</b></h4>
+            </div>
+        </div>
+        <div class="col-6 col-md-4"></div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm">
+            {% for post in big_post_latest %}
+            <div class="card" style="width: 100%;">
+                <div class="big-img-container">
+                    <img class="img-fluid big-img img-thumbnail" src="{{ post.thumbnail.url }}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <a href="{{ post.get_absolute_url }}" class="card-title"><b>{{ post.title }}</b></a>
+
+                    <p><a href="#" class="btn btn-primary">Read More</a></p>
+                </div>
+            </div>
+             {% endfor %}
+        </div>
+        <div class="col-sm">
+
+            {% for latest in small_post_latests1 %}
+            <div class="try" style="background-color:white;">
+                <div class="img-container">
+                    <img class="post-img img-thumbnail" style="" src="{{ latest.thumbnail.url }}">
+                </div>
+                <div class="post-info-footer">
+                    <div class="post-info">
+                        <a href="{{ latest.get_absolute_url }}" class="post-title">{{ latest.title }}</a>
+                    </div>
+                    <div class="post-footer">
+                        <p><b>Deadline: {{ latest.deadline }}</b></p>
+                    </div>
+                </div>
+            </div>
+
+            {% endfor %}
+        </div>
+        <div class="col-sm">
+            {% for latest in small_post_latests2 %}
+
+            <div class="try" style="background-color:white;">
+                <div class="img-container">
+                    <img class="post-img img-thumbnail" style="" src="{{ latest.thumbnail.url }}">
+                </div>
+                <div class="post-info-footer">
+                    <div class="post-info">
+                        <a href="{{ latest.get_absolute_url }}" class="post-title">{{ latest.title }}</a>
+                    </div>
+                    <div class="post-footer">
+                        <p><b>Deadline: {{ latest.deadline }}</b></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+</div>
+<br>
+<br>
+<div class="firstset">
+
+    <div class="row no-gutters">
+        <div class="col-sm-6 col-md-8">
+            <div class="latest">
+                <h4><b>Latest Courses</b></h4>
+            </div>
+        </div>
+        <div class="col-6 col-md-4"></div>
+    </div>
+    <div class="row">
+
+        <div class="col-sm">
+            {% for course in big_course_latest1 %}
+            <div class="card" style="width: 100%;">
+                <div class="big-img-container">
+                    <img class="img-fluid big-img img-thumbnail" src="{{ course.thumbnail.url }}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><b><a href="">{{ course.title }}</a></b></h5>
+                    <h6>{{ course.author }}</h6>
+
+                    <a href="#" class="btn btn-primary">Enrol Now</a>
+                </div>
+            </div>
+             {% endfor %}
+        </div>
+        <div class="col-sm">
+            {% for course in big_course_latest2 %}
+            <div class="card" style="width: 100%;">
+                <div class="big-img-container">
+                    <img class="img-fluid big-img img-thumbnail" src="{{ course.thumbnail.url }}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><b><a href="">{{ course.title }}</a></b></h5>
+                    <h6>{{ course.author }}</h6>
+
+                    <a href="#" class="btn btn-primary">Enrol Now</a>
+                </div>
+            </div>
+             {% endfor %}
+        </div>
+        <div class="col-sm">
+            {% for course in big_course_latest3 %}
+            <div class="card" style="width: 100%;">
+                <div class="big-img-container">
+                    <img class="img-fluid big-img img-thumbnail" src="{{ course.thumbnail.url }}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title"><b><a href="">{{ course.title }}</a></b></h5>
+                    <h6>{{ course.author }}</h6>
+
+                    <a href="#" class="btn btn-primary">Enrol Now</a>
+                </div>
+            </div>
+             {% endfor %}
+        </div>
+
+
+    </div>
+</div>
+<br>
+<br>
+<div clss="firstset">
+{% for category in categories %}
+    <div class="row no-gutters">
+        <div class="col-sm-6 col-md-8">
+            <div class="latest">
+                <h4><b>{{ category }}</b></h4>
+            </div>
+        </div>
+        <div class="col-6 col-md-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            {% for posts in category.post_set.all|slice:":1" %}
+            <div class="card" style="width: 100%;">
+                 <div class="big-img-container">
+                    <img class="img-fluid big-img img-thumbnail" src="{{ posts.thumbnail.url }}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <a href="{{ posts.get_absolute_url }}" class="card-title"><b>{{ posts.title }}</b></a>
+
+                    <p><a href="#" class="btn btn-primary">Read More</a></p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="col-sm">
+
+            {% for latest in category.post_set.all|slice:"1:4" %}
+            <div class="try" style="background-color:white;">
+                <div class="img-container">
+                    <img class="post-img img-thumbnail" style="" src="{{ latest.thumbnail.url }}">
+                </div>
+                <div class="post-info-footer">
+                    <div class="post-info">
+                        <a href="{{ latest.get_absolute_url }}" class="post-title">{{ latest.title }}</a>
+                    </div>
+                    <div class="post-footer">
+                        <p><b>Deadline: {{ latest.deadline }}</b></p>
+                    </div>
+                </div>
+            </div>
+
+
+            {% endfor %}
+        </div>
+        <div class="col-sm">
+            {% for latest in category.post_set.all|slice:"4:7" %}
+
+            <div class="try" style="background-color:white;">
+                <div class="img-container">
+                    <img class="post-img img-thumbnail" style="" src="{{ latest.thumbnail.url }}">
+                </div>
+                <div class="post-info-footer">
+                    <div class="post-info">
+                        <a href="{{ latest.get_absolute_url }}" class="post-title">{{ latest.title }}</a>
+                    </div>
+                    <div class="post-footer">
+                        <p><b>Deadline: {{ latest.deadline }}</b></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+<br>
+<br>
+<div clss="firstset">
+{% for category in course_categories %}
+    <div class="row no-gutters">
+        <div class="col-sm-6 col-md-8">
+            <div class="latest">
+                <h4><b>{{ category }}</b></h4>
+            </div>
+        </div>
+        <div class="col-6 col-md-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-sm">
+            {% for course in category.course_set.all|slice:":1" %}
+            <div class="card" style="width: 100%;">
+                 <div class="big-img-container">
+                    <img class="img-fluid big-img img-thumbnail" src="{{ course.thumbnail.url }}" class="card-img-top" alt="...">
+                </div>
+                <div class="card-body">
+                    <a href="" class="card-title"><b>{{ course.title }}</b></a>
+                    <p>{{ course.author }}</p>
+
+                    <p><a href="#" class="btn btn-primary">Enroll Course</a></p>
+                </div>
+            </div>
+            {% endfor %}
+
+        </div>
+        <div class="col-sm">
+
+            {% for course in category.course_set.all|slice:"1:4" %}
+            <div class="try" style="background-color:white;">
+                <div class="img-container">
+                    <img class="post-img img-thumbnail" style="" src="{{ course.thumbnail.url }}">
+                </div>
+                <div class="post-info-footer">
+                    <div class="post-info">
+                        <a href="" class="post-title">{{ course.title }}</a>
+                    </div>
+                    <div class="post-footer">
+                        <p>{{ course.author }}</p>
+                        <p><a href="#" class="btn btn-primary">Enroll Course</a></p>
+                    </div>
+                </div>
+            </div>
+
+
+            {% endfor %}
+        </div>
+        <div class="col-sm">
+            {% for course in category.course_set.all|slice:"4:7" %}
+
+            <div class="try" style="background-color:white;">
+                <div class="img-container">
+                    <img class="post-img img-thumbnail" style="" src="{{ course.thumbnail.url }}">
+                </div>
+                <div class="post-info-footer">
+                    <div class="post-info">
+                        <a href="" class="post-title">{{ course.title }}</a>
+                    </div>
+                    <div class="post-footer">
+                        <p>{{ course.author }}</p>
+                        <p><a href="#" class="btn btn-primary">Enroll Course</a></p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+    </div>
+    {% endfor %}
+</div>
+<br>
+<br>
+
+{% endblock %}
